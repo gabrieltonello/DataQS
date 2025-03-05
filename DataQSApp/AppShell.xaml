@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DataQSApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DataQSApp"
+    Shell.FlyoutBehavior="Flyout"
+    Title="DataQSApp">
+    <Shell.Resources>
+        <Style TargetType="ActivityIndicator">
+            <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        </Style>
+    </Shell.Resources>
+
+    <ShellContent
+        Title="Processamento de Dados"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+        FlyoutIcon="{AppThemeBinding Light='light_casa.png', Dark='dark_casa.png'}"/>
+    <ShellContent
+        Title="DashBoard"
+        ContentTemplate="{DataTemplate local:DashBoardPage1}"
+        Route="DashBoardPage1"
+        FlyoutIcon="{AppThemeBinding Light='light_chart.png', Dark='dark_chart.png'}"/>
+    <ShellContent
+        Title="Download da Qualidade"
+        ContentTemplate="{DataTemplate local:FileQualityDownload}"
+        Route="FileQualityDownload"
+        FlyoutIcon="{AppThemeBinding Light='light_download.png', Dark='dark_download.png'}"/>
+    <ShellContent
+        Title="Opções"
+        ContentTemplate="{DataTemplate local:OptionsPage}"
+        Route="OptionsPage"
+        FlyoutIcon="{AppThemeBinding Light='light_settings.png', Dark='dark_settings.png'}"/>
+
+</Shell>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataQS.App.DataModelRegistry"
+             Title="Cadastro de Modelo de Dados">
+
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Cadastro de Dados" FontSize="24" HorizontalOptions="Center" />
+
+            <!-- Name -->
+            <Label Text="Nome do Modelo de Dados" />
+            <Entry x:Name="NameEntry" />
+
+            <!-- Delimiter -->
+            <Label Text="Delimitador" />
+            <Entry x:Name="DelimiterEntry" />
+
+            <Label Text="Year" />
+            <Entry x:Name="YearEntry" Keyboard="Numeric" />
+
+            <Label Text="Day" />
+            <Entry x:Name="DayEntry" Keyboard="Numeric" />
+
+            <Label Text="DateTm" />
+            <Entry x:Name="DateTmEntry" Keyboard="Numeric" />
+
+            <Label Text="Min" />
+            <Entry x:Name="MinEntry" Keyboard="Numeric" />
+
+            <Label Text="GloAvg" />
+            <Entry x:Name="GloAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="DirAvg" />
+            <Entry x:Name="DirAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="DiffAvg" />
+            <Entry x:Name="DiffAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="LwAvg" />
+            <Entry x:Name="LwAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="ParAvg" />
+            <Entry x:Name="ParAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="LuxAvg" />
+            <Entry x:Name="LuxAvgEntry" Keyboard="Numeric" />
+
+            <Label Text="TpSfc" />
+            <Entry x:Name="TpSfcEntry" Keyboard="Numeric" />
+
+            <Label Text="Humid" />
+            <Entry x:Name="HumidEntry" Keyboard="Numeric" />
+
+            <Label Text="Press" />
+            <Entry x:Name="PressEntry" Keyboard="Numeric" />
+
+            <Label Text="Rain" />
+            <Entry x:Name="RainEntry" Keyboard="Numeric" />
+
+            <Label Text="Ws10m" />
+            <Entry x:Name="Ws10mEntry" Keyboard="Numeric" />
+
+            <Label Text="Wd10m" />
+            <Entry x:Name="Wd10mEntry" Keyboard="Numeric" />
+
+            <Label Text="Ws25" />
+            <Entry x:Name="Ws25Entry" Keyboard="Numeric" />
+
+            <Label Text="Wd25" />
+            <Entry x:Name="Wd25Entry" Keyboard="Numeric" />
+
+            <Label Text="Tp25" />
+            <Entry x:Name="Tp25Entry" Keyboard="Numeric" />
+
+            <Label Text="Ws50" />
+            <Entry x:Name="Ws50Entry" Keyboard="Numeric" />
+
+            <Label Text="Wd50" />
+            <Entry x:Name="Wd50Entry" Keyboard="Numeric" />
+
+            <Label Text="Tp50" />
+            <Entry x:Name="Tp50Entry" Keyboard="Numeric" />
+
+            <!-- Botão para salvar -->
+            <Button Text="Salvar" Clicked="OnSaveClicked" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

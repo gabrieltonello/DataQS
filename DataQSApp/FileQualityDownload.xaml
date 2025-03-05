@@ -1,0 +1,33 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:local="clr-namespace:DataQS.Core.ViewModels;assembly=DataQS.Core"
+             x:Class="DataQSApp.FileQualityDownload"
+             Title="Download da Qualidade">
+
+    <ContentPage.BindingContext>
+        <local:FileQualityDownloadViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="10" Spacing="15">
+
+                <!-- Dropdown Row -->
+                <HorizontalStackLayout Spacing="10">
+                    <Picker x:Name="HistoricalPicker" 
+                            Title="Histórico de Análises"
+                            HorizontalOptions="FillAndExpand"
+                            SelectedIndexChanged="OnHistoricalPickerSelected" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Button
+                            Text="Download"
+                            Clicked="OnDownloadClicked" />
+                </HorizontalStackLayout>
+
+        
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

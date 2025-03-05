@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataQSApp.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <!-- Título para Seleção de Estação -->
+            <Label
+                Text="Selecione a Estação"
+                Style="{StaticResource SubHeadline}"
+                HorizontalOptions="Start" />
+            <Grid ColumnDefinitions="*, Auto, Auto" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+
+                <Picker
+                    x:Name="StationPicker"
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndexChanged="OnStationPickerSelected"
+                    ItemDisplayBinding="{Binding Name}"
+                    Margin="0,0,10,0" />
+
+                <Button
+                    Text="Cadastrar"
+                    Grid.Column="1"
+                    Clicked="OnAddStationClicked"
+                    WidthRequest="100"
+                    Margin="0,0,10,0" />
+
+                <Button
+                    Text="Deletar"
+                    Grid.Column="2"
+                    Clicked="OnDeleteStationClicked"
+                    WidthRequest="100" />
+
+            </Grid>
+
+            <!-- Título para Seleção do Modelo de Dados -->
+            <Label
+                Text="Selecione o Modelo de Dados"
+                Style="{StaticResource SubHeadline}"
+                HorizontalOptions="Start" />
+            <Grid ColumnDefinitions="*, Auto, Auto" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+
+                <Picker
+                    x:Name="DataModelPicker"
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndexChanged="OnDataModelPickerSelected"
+                    Margin="0,0,10,0" />
+
+                <Button
+                    Text="Cadastrar"
+                    Grid.Column="1"
+                    Clicked="OnAddDataModelClicked"
+                    WidthRequest="100"
+                    Margin="0,0,10,0" />
+
+                <Button
+                    Text="Deletar"
+                    Grid.Column="2"
+                    Clicked="OnDeleteDataModelClicked"
+                    WidthRequest="100" />
+
+            </Grid>
+
+            <!-- Botão para Upload de Arquivo -->
+            <Button
+                x:Name="UploadFileButton"
+                Text="Upload de Arquivo"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnUploadFileClicked" />
+
+            <!-- Label para exibir o nome do arquivo selecionado -->
+            <Label
+                x:Name="FileNameLabel"
+                Text=""
+                FontAttributes="Italic"
+                TextColor="Gray"
+                HorizontalOptions="Start" />
+
+            <!-- Expander para Detalhes Avançados -->
+            <toolkit:Expander x:Name="AdvancedDetailsExpander" IsExpanded="False">
+                <toolkit:Expander.Header>
+                    <Label Text="Detalhes Avançados" FontAttributes="Bold" FontSize="Medium" />
+                </toolkit:Expander.Header>
+
+                <VerticalStackLayout Padding="10" Spacing="10">
+
+                    <!-- Seção de Dados da Estação -->
+                    <Label Text="Dados da Estação" FontAttributes="Bold" FontSize="Micro" />
+                    <Grid ColumnSpacing="20" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Latitude e Longitude -->
+                        <Label Text="Latitude:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="LatitudeLabel" Text="-" Grid.Row="0" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Longitude:" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="LongitudeLabel" Text="-" Grid.Row="0" Grid.Column="3" FontAttributes="Italic" />
+
+                        <!-- Altitude e Temperatura Máxima -->
+                        <Label Text="Altitude (m):" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="HeightLabel" Text="-" Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Temperatura Máxima (°C):" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="MaxTempLabel" Text="-" Grid.Row="1" Grid.Column="3" FontAttributes="Italic" />
+
+                        <!-- Temperatura Mínima e Precipitação Máxima -->
+                        <Label Text="Temperatura Mínima (°C):" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="MinTempLabel" Text="-" Grid.Row="2" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Precipitação Máxima (mm):" Grid.Row="2" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="MaxRainfallLabel" Text="-" Grid.Row="2" Grid.Column="3" FontAttributes="Italic" />
+                    </Grid>
+
+                    <!-- Seção de Variáveis do Modelo de Dados -->
+                    <Label Text="Variáveis do Modelo de Dados (Posição do Index do Arquivo)" FontAttributes="Bold" FontSize="Micro" Margin="0,10,0,5" />
+                    <Grid ColumnSpacing="20" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Ano, Dia, Data/Hora e Minuto -->
+                        <Label Text="Ano (Year):" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="YearLabel" Text="-" Grid.Row="0" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Dia (Day):" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="DayLabel" Text="-" Grid.Row="0" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Data/Hora (DateTm):" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="DateTmLabel" Text="-" Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Minuto (Min):" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="MinLabel" Text="-" Grid.Row="1" Grid.Column="3" FontAttributes="Italic" />
+
+                        <!-- Radiância Global, Direta, Difusa e Longa -->
+                        <Label Text="Radiância Global (GloAvg):" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="GloAvgLabel" Text="-" Grid.Row="2" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Radiância Direta (DirAvg):" Grid.Row="2" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="DirAvgLabel" Text="-" Grid.Row="2" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Radiância Difusa (DiffAvg):" Grid.Row="3" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="DiffAvgLabel" Text="-" Grid.Row="3" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Radiação Longa (LwAvg):" Grid.Row="3" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="LwAvgLabel" Text="-" Grid.Row="3" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Radiância PAR (ParAvg):" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="ParAvgLabel" Text="-" Grid.Row="4" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Iluminância (LuxAvg):" Grid.Row="4" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="LuxAvgLabel" Text="-" Grid.Row="4" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Temp. Superfície (TpSfc):" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="TpSfcLabel" Text="-" Grid.Row="5" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Umidade (Humid):" Grid.Row="5" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="HumidLabel" Text="-" Grid.Row="5" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Pressão (Press):" Grid.Row="6" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="PressLabel" Text="-" Grid.Row="6" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Precipitação (Rain):" Grid.Row="6" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="RainLabel" Text="-" Grid.Row="6" Grid.Column="3" FontAttributes="Italic" />
+
+                        <!-- Velocidade e Direção do Vento em diferentes alturas -->
+                        <Label Text="Velocidade do Vento a 10m (Ws10m):" Grid.Row="7" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="Ws10mLabel" Text="-" Grid.Row="7" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Direção do Vento a 10m (Wd10m):" Grid.Row="7" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="Wd10mLabel" Text="-" Grid.Row="7" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Velocidade do Vento a 25m (Ws25):" Grid.Row="8" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="Ws25Label" Text="-" Grid.Row="8" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Direção do Vento a 25m (Wd25):" Grid.Row="8" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="Wd25Label" Text="-" Grid.Row="8" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Temperatura a 25m (Tp25):" Grid.Row="9" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="Tp25Label" Text="-" Grid.Row="9" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Velocidade do Vento a 50m (Ws50):" Grid.Row="9" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="Ws50Label" Text="-" Grid.Row="9" Grid.Column="3" FontAttributes="Italic" />
+
+                        <Label Text="Direção do Vento a 50m (Wd50):" Grid.Row="10" Grid.Column="0" FontAttributes="Bold" />
+                        <Label x:Name="Wd50Label" Text="-" Grid.Row="10" Grid.Column="1" FontAttributes="Italic" />
+                        <Label Text="Temperatura a 50m (Tp50):" Grid.Row="10" Grid.Column="2" FontAttributes="Bold" />
+                        <Label x:Name="Tp50Label" Text="-" Grid.Row="10" Grid.Column="3" FontAttributes="Italic" />
+                    </Grid>
+                </VerticalStackLayout>
+            </toolkit:Expander>
+
+            <!-- Botão para Upload de Arquivo -->
+            <Button
+                x:Name="BeginProcess"
+                Text="Iniciar Processamento"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnStartQualityProcessClicked" />
+            <ActivityIndicator x:Name="activityIndicator1"
+                       IsRunning="{Binding IsBusy}"
+                       Color="BlueViolet"
+                       AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                       AbsoluteLayout.LayoutFlags="PositionProportional" />
+        </VerticalStackLayout>
+
+
+    </ScrollView>
+
+</ContentPage>
